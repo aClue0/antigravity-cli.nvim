@@ -73,6 +73,10 @@ function M.toggle()
 
 		if vim.bo[state.buf].buftype ~= "terminal" then
 			vim.cmd("term " .. M.config.cmd)
+			vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], {
+				buffer = state.buf,
+				desc = "Exit Antigravity terminal mode",
+			})
 			vim.cmd("startinsert")
 		else
 			vim.cmd("startinsert")
